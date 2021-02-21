@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="id user"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="12dp" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Username"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="12dp" />
+
+    <TextView
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Username"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="12dp" />
+
+    <TextView
+        android:id="@+id/functie"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Nume"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="12dp" />
+
+    <TextView
+        android:id="@+id/gen"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Prenume"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="12dp" />
+
+
+</LinearLayout>
