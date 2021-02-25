@@ -1,16 +1,18 @@
 package com.example.subiectexamen.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String username;
     private String password;
-    private int time;
+    private String time;
     private String gen;
     private String functie;
 
     public User() {
     }
 
-    public User(String username, String password, int time, String gen, String functie) {
+    public User(String username, String password, String time, String gen, String functie) {
         this.username = username;
         this.password = password;
         this.time = time;
@@ -34,11 +36,11 @@ public class User {
         this.password = password;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

@@ -2,6 +2,7 @@ package com.example.subiectexamen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,8 +30,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
-    private UserAdaptor userAdaptor;
-    private List<User> users = new ArrayList<>();
+    public static List<User> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listview);
 
-        String stringUrl = "https://run.mocky.io/v3/84769bc9-5c57-403f-b897-6fc0e50b7fd8";
+        String stringUrl = "https://run.mocky.io/v3/cb934188-6ddb-4674-8bdf-9c4b1ffdc901";
 
         URL url = null;
         try {
@@ -49,12 +49,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         GetJsonUser getJsonUser = new GetJsonUser();
-        getJsonUser.execute(url);
+        if (users == null || users.isEmpty()) {
+            users = new ArrayList<>();
+            getJsonUser.execute(url);
+        } else {
+            UserAdaptor userAdaptor = new UserAdaptor(getApplicationContext(), R.layout.item_row, users);
+            listView.setAdapter(userAdaptor);
+        }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("JSONUSER", "Pozitia apasata" + i);
+                User user = users.get(i);
 
+                Intent intent = new Intent(getApplicationContext(), UserEdit.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -90,10 +102,10 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONArray jsonArray = new JSONArray(continutFinal);
 
-                    for(int i = 0; i < jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                        int time = jsonObject.getInt("time");
+                        String time = jsonObject.getString("time");
                         String password = jsonObject.getString("password");
                         String username = jsonObject.getString("username");
                         String gen = jsonObject.getString("gen");
