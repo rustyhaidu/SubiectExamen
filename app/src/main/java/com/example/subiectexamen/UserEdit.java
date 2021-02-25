@@ -115,7 +115,7 @@ public class UserEdit extends AppCompatActivity {
 
                 User newuser = new User(usernameText, passwordText, timpIntrareText, genText, functieText);
 
-
+                boolean isFound = false;
                 for (int i = 0; i < MainActivity.users.size(); i++) {
                     if (MainActivity.users.get(i).getUsername().equals(usernameText) && MainActivity.users.get(i).getPassword().equals(passwordText)) {
                        /* MainActivity.users.get(i).setUsername(usernameText);
@@ -124,7 +124,11 @@ public class UserEdit extends AppCompatActivity {
                         MainActivity.users.get(i).setFunctie(functieText);
                         MainActivity.users.get(i).setGen(genText);*/
                         MainActivity.users.set(i, newuser);
+                        isFound = true;
                     }
+                }
+                if (!isFound) {
+                    MainActivity.users.add(newuser);
                 }
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
